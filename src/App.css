@@ -24,6 +24,7 @@ body {
   height: 100%;
   background: var(--lighter-color);
   right: -260px;
+  transition: all 500ms linear;
 }
 
 .sidebar:active {
@@ -49,11 +50,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0 1rem 0;
 }
 
-.user i {
-  margin: 10px;
-  font-size: 2rem;
+.avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: 2px solid var(--lightest-color);
+  margin-right: 10px;
 }
 
 main {
