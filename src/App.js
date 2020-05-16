@@ -10,15 +10,33 @@ const user = {
   avatar: "https://bit.ly/3fWa4Gw",
 }
 
+const tasks = [
+  {
+    id: 1,
+    title: "Shopping List",
+    completed: false
+  },
+  {
+    id: 2,
+    title: "School Assignments",
+    completed: false
+  },
+  {
+    id: 3,
+    title: "Vacation Packing List",
+    completed: false
+  },
+]
+
 function App() {
   return (
     <>
       <header className="sidebar">
-        <div className="toggle-btn" onlick={toggleSidebar}>
+        <div className="toggle-btn" onClick={toggleSidebar}>
           <i className="fas fa-bars"></i>
         </div>
         <div className="user">
-          <img alt="user avatar" src="{user.avatar}"/>
+          <img className="avatar" alt="user avatar" src={user.avatar}/>
           <h3>{user.name}</h3>
         </div>
         <ul>
@@ -37,9 +55,9 @@ function App() {
         </section>
         <section className="inner__frame">
           <ul>
-            <li>Shopping List</li>
-            <li>School Assignments</li>
-            <li>Vacation Packing List</li>
+            {tasks.map((task) => (
+              <li>{task.title}</li>
+            ))}
           </ul>
           <div className="new__task">
             <i className="fas fa-plus-circle"></i>
