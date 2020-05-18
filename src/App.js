@@ -1,58 +1,56 @@
 import React from "react";
 import "./App.css";
-
-function toggleSidebar() {
-  document.querySelector(".sidebar").classList.toggle("active");
-}
+import Task from "./components/Task";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import Subheader from "./components/subheader";
+import Additem from "./components/Additem";
+import Footer from "./components/footer";
 
 const user = {
   name: "Denise Wright",
   avatar: "https://bit.ly/3fWa4Gw",
-}
+};
+
+const tasks = [
+  {
+    id: 1,
+    title: "Shopping List",
+    completed: false,
+  },
+  {
+    id: 2,
+    title: "School Assignments",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Vacation Packing List",
+    completed: false,
+  },
+];
 
 function App() {
   return (
     <>
-      <header className="sidebar">
-        <div className="toggle-btn" onlick={toggleSidebar}>
-          <i className="fas fa-bars"></i>
-        </div>
-        <div className="user">
-          <img alt="user avatar" src="{user.avatar}"/>
-          <h3>{user.name}</h3>
-        </div>
-        <ul>
-          <li>My Tasks</li>
-          <li>My Profile</li>
-          <li>Settings</li>
-        </ul>
-      </header>
+      <Nav avatar={user.avatar} name={user.name} />
+      <Header />
       <main>
-        <div className="logo">
-          <img alt="just do it logo" src="./logo192.png" />
-        </div>
         <section className="sub__header">
-          <h3>My Tasks</h3>
-          <button>Edit Tasks</button>
+          <Subheader subheader="My Tasks" button="Edit Tasks" />
         </section>
-        <section className="inner__frame">
+        <section className="list_box">
           <ul>
-            <li>Shopping List</li>
-            <li>School Assignments</li>
-            <li>Vacation Packing List</li>
+            {tasks.map((taskObj, index) => (
+              <Task task={taskObj} key={index} />
+            ))}
           </ul>
           <div className="new__task">
-            <i className="fas fa-plus-circle"></i>
-            <h3>Create New Task</h3>
+            <Additem add="Create New Task" />
           </div>
         </section>
       </main>
-      <footer>
-        <cite>
-          Designed By:{" "}
-          <a href="https://denisewrightdesigns.com">Denise Wright</a>
-        </cite>
-      </footer>
+          <Footer/>
     </>
   );
 }
