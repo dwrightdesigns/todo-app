@@ -2,7 +2,6 @@ import React from "react";
 import { bool } from "prop-types";
 import { StyledMenu } from "./Menu.styled";
 
-
 const Menu = ({ open, ...props }) => {
   const isHidden = open ? true : false;
   const tabIndex = isHidden ? 0 : -1;
@@ -10,7 +9,7 @@ const Menu = ({ open, ...props }) => {
   return (
     <StyledMenu open={open} ariaHidden={!isHidden} {...props}>
       <div className="user">
-        <img className="avatar" alt="user avatar" src={props.avatar}/>
+        <img className="avatar" alt="user avatar" src={props.avatar} />
         <h3>{props.name}</h3>
       </div>
       <a href="/" tabIndex={tabIndex}>

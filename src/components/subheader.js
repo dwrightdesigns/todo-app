@@ -4,7 +4,7 @@ function Subheader(props) {
   return (
     <>
       <h3>{props.subheader}</h3>
-      <button>{props.button}</button>
+      <button className="button">{props.button}</button>
     </>
   );
 }
