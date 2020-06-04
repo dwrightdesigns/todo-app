@@ -4,14 +4,7 @@ import Subheader from "./subheader";
 import Additem from "./Additem";
 import List from "./List";
 
-
-
-
 class myTasks extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.onEdit = this.onEdit.bind(this);
-  // }
   state = {   
     user: {
       name: "Denise Wright",
@@ -34,8 +27,6 @@ class myTasks extends React.Component {
   triggerTasks = () => {
     this.setState({ ...this.state, isEmptyState: true, isAddTripState: false });
   };
-
-
 
 
   render() {

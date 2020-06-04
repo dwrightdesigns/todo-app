@@ -1,5 +1,4 @@
 import React from "react";
-import Evening from "../img/evening.jpg"
 
 function timeOfDay() {
   const date = new Date();

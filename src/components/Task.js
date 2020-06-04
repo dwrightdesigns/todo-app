@@ -14,13 +14,13 @@ function Task(props) {
           />
           <span className="label-text">
             {props.task.title}{" "}
+          </span>
             <Link className="details" to={"/task/" + props.task.id}>
               View
             </Link>
             <Link className="details" to={"/editTask/" + props.task.id}>
               Edit
             </Link>
-          </span>
         </label>
         <i
           className="fas fa-trash-alt"

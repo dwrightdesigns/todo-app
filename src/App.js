@@ -91,7 +91,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.tasks != this.state.tasks) {
+    if (prevState.tasks !== this.state.tasks) {
       localStorage.setItem(TASKS_KEY, JSON.stringify(this.state.tasks));
     }
   }

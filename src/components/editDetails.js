@@ -3,9 +3,6 @@ import SubHeader from "./subheader";
 import { withRouter } from "react-router-dom";
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   getTask = () => {
     return (
@@ -31,7 +28,6 @@ class Details extends Component {
   };
 
   componentWillMount(prevProps) {
-    console.log(this.props.tasks);
     if (prevProps !== this.props) {
       this.setState({ task: this.getTask() });
     }
