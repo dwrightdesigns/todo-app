@@ -16,9 +16,6 @@
 
 body {
   background-color: var(--light-color);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 100vh;
   color: var(--dark-color);
   box-sizing: border-box;
@@ -36,6 +33,11 @@ body {
 .wrapper {
   overflow: hidden;
   width: 100%;
+  background: url(./img/background.jpg);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .sidebar:active {
@@ -83,8 +85,9 @@ main {
 
 .logo {
   padding-top: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   text-align: center;
+  background-color: var(--lightest-color);
 }
 
 .list_box {
@@ -138,21 +141,14 @@ main {
 }
 
 .sub__header {
-  display: flex;
-  justify-content: space-between;
-  max-width: 400px;
-  margin: auto;
-  align-items: center;
+  width: 400px;
 }
 
-.button {
-  outline: none;
-  color: var(--lightest-color);
-  background-color: var(--main-color);
-  border-radius: 4px;
-  padding: 0.4rem;
-  font-size: 1rem;
-  cursor: pointer;
+.subhead{
+  align-items: center;
+  color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
 }
 
 .new__task {
@@ -176,8 +172,8 @@ main {
 footer {
   text-align: center;
   padding-top: 2rem;
-  background-color: var(--dark-color);
-  color: var(--lightest-color);
+  background-color: var(--lighter-color);
+  color: var(--dark-color);
   height: 40px;
   display: flex;
   justify-content: center;
@@ -274,14 +270,85 @@ label {
   }
 }
 
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
 .greeting {
   color: white;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 300px;
   padding: 50px;
   text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  line-height: 2.5rem;
 }
+
+.details {
+  font-size: 10px;
+  padding: 4px;
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+// form styles
+
+.form_box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 1rem;
+}
+
+.label {
+  margin-bottom: 12px;
+}
+
+.label_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputs {
+  height: 30px;
+  width: 260px;
+  margin: 0 0 1rem 0;
+  border: none;
+  cursor: text;
+  outline: none;
+}
+
+.option{
+  height: 30px;
+  width: 260px;
+  margin: 0 0 1rem 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.button {
+  outline: none;
+  color: var(--lightest-color);
+  background-color: var(--main-color);
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid #970155;
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.button:hover {
+  opacity: 90%;
+}
+
+

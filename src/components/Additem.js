@@ -22,7 +22,7 @@ class AddItem extends Component {
         <div>
           <h3 className="add" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle"></i>
-            Create New Task
+            Add Item
           </h3>
         </div>
       </>
