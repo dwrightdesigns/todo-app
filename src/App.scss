@@ -349,3 +349,22 @@ label {
 .button:hover {
   opacity: 90%;
 }
+
+.buttons {
+  display: flex;
+}
+
+.details_wrapper {
+  padding: 1rem;
+  line-height: 2rem;
+}
+
+.details_box {
+  background-color: var(--lighter-color);
+  width: 400px;
+  border-radius: 4px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}

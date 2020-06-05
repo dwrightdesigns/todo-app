@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import SubHeader from "./subheader";
 import { withRouter } from "react-router-dom";
 
-class Details extends Component {
-
+class EditDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.handleBack = this.handleBack.bind(this);
+  }
   getTask = () => {
     return (
       this.props.tasks.find((t) => t.id === this.props.match.params.taskId) ||
@@ -36,8 +39,13 @@ class Details extends Component {
   editTask = (e) => {
     e.preventDefault();
     this.props.editTask(this.state.task);
-    this.props.history.push("/myTasks")
-  }
+    this.props.history.push("/myTasks");
+  };
+
+  handleBack = (e) => {
+    e.preventDefault();
+    this.props.history.push("/myTasks");
+  };
 
   render() {
     const { task } = this.state;
@@ -98,8 +106,19 @@ class Details extends Component {
                 className="inputs"
               />
             </label>
-
-            <button className="button" type="submit" >Save</button>
+            <div className="buttons">
+              <button
+                className="button"
+                type="button"
+                onClick={this.handleBack}
+              >
+                Go Back
+              </button>
+              {/* This button needs to be wired to go back to MyTasks */}
+              <button className="button" type="submit">
+                Save
+              </button>
+            </div>
           </form>
         </section>
       </>
@@ -107,4 +126,4 @@ class Details extends Component {
   }
 }
 
-export default withRouter(Details);
+export default withRouter(EditDetails);

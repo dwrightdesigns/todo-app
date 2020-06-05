@@ -8,8 +8,9 @@ import MyTasks from "./components/MyTasks";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import EditDetails from "./components/editDetails";
-import Details from "./components/Details";
+import ViewDetails from "./components/viewDetails";
 import { v4 as uuidv4 } from "uuid";
+import styled from 'styled-components';
 
 const TASKS_KEY = "justdoit_app";
 
@@ -30,7 +31,7 @@ function timeOfDay() {
     background = styles.eveningBg;
   }
 
-  return {timeofDay, background};
+  return { timeofDay, background };
 }
 
 class App extends React.Component {
@@ -47,7 +48,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
       {
         id: "2",
@@ -56,7 +57,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
       {
         id: "3",
@@ -65,7 +66,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
     ],
     menuActive: false,
@@ -77,7 +78,14 @@ class App extends React.Component {
 
   addTask = (task) => {
     const tasks = [...this.state.tasks];
-    tasks.push({ title: task, completed: false, id:uuidv4(), option: "", date: "", description: ""});
+    tasks.push({
+      title: task,
+      completed: false,
+      id: uuidv4(),
+      option: "",
+      date: "",
+      description: "",
+    });
     this.setState({ tasks });
   };
 
@@ -101,7 +109,7 @@ class App extends React.Component {
     const taskIndex = tasks.findIndex((t) => t.id === task.id);
     tasks.splice(taskIndex, 1, task);
     this.setState({ tasks });
-  }
+  };
 
   componentDidMount() {
     const tasksString = localStorage.getItem(TASKS_KEY);
@@ -115,8 +123,6 @@ class App extends React.Component {
       localStorage.setItem(TASKS_KEY, JSON.stringify(this.state.tasks));
     }
   }
-
-  
 
   render() {
     return (
@@ -147,10 +153,19 @@ class App extends React.Component {
                 <Profile />
               </Route>
               <Route path="/editTask/:taskId">
-                <EditDetails tasks={this.state.tasks} editTask={this.editTask}/>
+                <EditDetails
+                  tasks={this.state.tasks}
+                  editTask={this.editTask}
+                />
               </Route>
-              <Route path="/task/">
-                <Details />
+              <Route path="/task/:taskId">
+                <ViewDetails
+                  title={this.state.tasks.title}
+                  date={this.state.tasks.date}
+                  option={this.state.tasks.option}
+                  description={this.state.tasks.description}
+                  id={this.state.tasks.id}
+                />
               </Route>
             </Switch>
           </main>
@@ -171,6 +186,6 @@ const styles = {
   eveningBg: {
     backgroundImage: `url("/img/paul-matheson-kIdprAuzDvc-unsplash.jpg")`,
   },
-}
+};
 
 export default App;
