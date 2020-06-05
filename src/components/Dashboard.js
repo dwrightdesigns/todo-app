@@ -19,7 +19,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
     return (
       <div className="greeting">
         <h1>{this.props.greeting}</h1>
@@ -36,8 +35,5 @@ class Dashboard extends React.Component {
     );
   }
 }
-
-
-
 
 export default Dashboard;

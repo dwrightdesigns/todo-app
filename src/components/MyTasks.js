@@ -3,9 +3,10 @@ import Task from "./Task";
 import Subheader from "./subheader";
 import Additem from "./Additem";
 import List from "./List";
+import styled from "styled-components";
 
 class myTasks extends React.Component {
-  state = {   
+  state = {
     user: {
       name: "Denise Wright",
       avatar: "/img/denise-wright.jpg",
@@ -28,11 +29,10 @@ class myTasks extends React.Component {
     this.setState({ ...this.state, isEmptyState: true, isAddTripState: false });
   };
 
-
   render() {
     return (
       <>
-        <section className="sub__header">
+        <StyledSub>
           <Subheader
             addTrip={this.triggerDelete}
             subheader="My Tasks"
@@ -40,8 +40,8 @@ class myTasks extends React.Component {
             open={this.state.menuActive}
             onClick={() => this.toggleMenu(!this.state.menuActive)}
           />
-        </section>
-        <section className="list_box">
+        </StyledSub>
+        <StyledList>
           <ul id="tasks">
             {this.props.tasks.map(
               (taskObj, index) =>
@@ -64,13 +64,38 @@ class myTasks extends React.Component {
             )}
           </ul>
 
-          <div className="new__task">
+          <StyledTask>
             <Additem handleAdd={this.props.addTask} />
-          </div>
-        </section>
+          </StyledTask>
+        </StyledList>
       </>
     );
   }
 }
+
+const StyledSub = styled.section`
+  align-items: center;
+  color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledTask = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 20px;
+  border-top: 2px solid rgba(220, 220, 220, 1);
+`;
+
+const StyledList = styled.section`
+  background-color: var(--lighter-color);
+  width: 400px;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: 1rem;
+`;
 
 export default myTasks;

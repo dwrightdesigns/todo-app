@@ -80,12 +80,11 @@ main {
 
 .logo {
   text-align: center;
-  
 }
 
-.logo_wrapper{
+.logo_wrapper {
   height: 15vh;
-  background-color: var(--lightest-color);
+  background-color: var(--lighter-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -255,18 +254,14 @@ label {
 
     + .label-text::before {
       font-family: "FontAwesome";
-      content: url('./img/un-check.png');
+      content: url("./img/un-check.png");
       display: inline-block;
     }
 
     &:checked + .label-text::before {
-      content: url('./img/check.png');
+      content: url("./img/check.png");
       color: rgba(224, 23, 131, 1);
     }
-  }
-
-  .strikethrough:checked + span {
-    text-decoration: line-through;
   }
 }
 
