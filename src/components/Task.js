@@ -6,7 +6,7 @@ function Task(props) {
   return (
     <>
       <StyledTasks>
-        <StyledStrike>
+        <label>
           <input
             className="strikethrough"
             type="checkbox"
@@ -20,7 +20,7 @@ function Task(props) {
           <Link className="details" to={"/editTask/" + props.task.id}>
             Edit
           </Link>
-        </StyledStrike>
+        </label>
         <i
           className="fas fa-trash-alt"
           onClick={() => props.delete(props.task.title)}
@@ -40,10 +40,6 @@ const StyledTasks = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px 0 20px;
-`;
-
-const StyledStrike = styled.label`
-  text-decoration: ${(props) => (props.strike ? "none" : "line-through")};
 `;
 
 export default Task;

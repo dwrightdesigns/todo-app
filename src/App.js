@@ -177,13 +177,13 @@ class App extends React.Component {
 
 const styles = {
   morningBg: {
-    backgroundImage: `url("/img/background.jpg")`,
+    backgroundImage: `url("./img/background.jpg")`,
   },
   afternoonBg: {
-    backgroundImage: `url(/img/john-jason-aF99M98c_uk-unsplash.jpg")`,
+    backgroundImage: `url("./img/john-jason-aF99M98c_uk-unsplash.jpg")`,
   },
   eveningBg: {
-    backgroundImage: `url("/img/paul-matheson-kIdprAuzDvc-unsplash.jpg")`,
+    backgroundImage: `url("./img/paul-matheson-kIdprAuzDvc-unsplash.jpg")`,
   },
 };
 

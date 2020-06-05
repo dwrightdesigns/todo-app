@@ -84,7 +84,7 @@ main {
 
 .logo_wrapper {
   height: 15vh;
-  background-color: var(--lighter-color);
+  background-color: var(--lightest-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -262,6 +262,10 @@ label {
       content: url("./img/check.png");
       color: rgba(224, 23, 131, 1);
     }
+  }
+
+  .strikethrough:checked + span {
+    text-decoration: line-through;
   }
 }
 
