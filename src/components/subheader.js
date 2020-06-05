@@ -3,7 +3,7 @@ import React from "react";
 function Subheader(props) {
   return (
     <>
-      <h3>{props.subheader}</h3>
+      <h3 className="sub__header">{props.subheader}</h3>
     </>
   );
 }

@@ -13,11 +13,31 @@ import { v4 as uuidv4 } from "uuid";
 
 const TASKS_KEY = "justdoit_app";
 
+function timeOfDay() {
+  const date = new Date();
+  const hours = date.getHours();
+  let timeofDay;
+  let background;
+
+  if (hours < 12) {
+    timeofDay = "Good Morning";
+    background = styles.morningBg;
+  } else if (hours >= 12 && hours < 17) {
+    timeofDay = "Good Afternoon";
+    background = styles.afternoonBg;
+  } else {
+    timeofDay = "Good Evening";
+    background = styles.eveningBg;
+  }
+
+  return {timeofDay, background};
+}
+
 class App extends React.Component {
   state = {
     user: {
       name: "Denise Wright",
-      avatar: "https://bit.ly/3fWa4Gw",
+      avatar: "/img/denise-wright.jpg",
     },
     tasks: [
       {
@@ -96,6 +116,8 @@ class App extends React.Component {
     }
   }
 
+  
+
   render() {
     return (
       <>
@@ -108,10 +130,10 @@ class App extends React.Component {
             name={this.state.user.name}
           />
           <Header />
-          <main className="center">
+          <main style={timeOfDay().background} className="center wrapper">
             <Switch>
               <Route exact path="/">
-                <Dashboard />
+                <Dashboard greeting={timeOfDay().timeofDay} />
               </Route>
               <Route path="/mytasks">
                 <MyTasks
@@ -137,6 +159,18 @@ class App extends React.Component {
       </>
     );
   }
+}
+
+const styles = {
+  morningBg: {
+    backgroundImage: `url("/img/background.jpg")`,
+  },
+  afternoonBg: {
+    backgroundImage: `url(/img/john-jason-aF99M98c_uk-unsplash.jpg")`,
+  },
+  eveningBg: {
+    backgroundImage: `url("/img/paul-matheson-kIdprAuzDvc-unsplash.jpg")`,
+  },
 }
 
 export default App;

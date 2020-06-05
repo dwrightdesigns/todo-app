@@ -8,7 +8,7 @@ class myTasks extends React.Component {
   state = {   
     user: {
       name: "Denise Wright",
-      avatar: "https://bit.ly/3fWa4Gw",
+      avatar: "/img/denise-wright.jpg",
     },
     currentTask: [
       {

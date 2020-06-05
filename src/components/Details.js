@@ -7,7 +7,7 @@ function Details(props) {
     <>
       <SubHeader subheader="Task Details" />
       <section className="list_box">
-        <Link className="button" to={("/editTask/" + props.task.id)}>
+        <Link className="button" to={"/editTask/" + props.task.id}>
           Edit Task
         </Link>
       </section>
