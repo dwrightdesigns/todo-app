@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import SubHeader from "./subheader";
 import { Link } from "react-router-dom";
 
-function getTask() {
-  return (
-    this.props.tasks.find((t) => t.id === this.props.match.params.taskId) || {}
-  );
-}
+// function getTask() {
+//   return (
+//     this.props.tasks.find((t) => t.id === this.props.match.params.taskId) || {}
+//   );
+// }
 
 class Details extends Component {
   render() {

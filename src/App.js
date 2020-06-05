@@ -10,7 +10,6 @@ import Profile from "./components/Profile";
 import EditDetails from "./components/editDetails";
 import ViewDetails from "./components/viewDetails";
 import { v4 as uuidv4 } from "uuid";
-import styled from 'styled-components';
 
 const TASKS_KEY = "justdoit_app";
 
