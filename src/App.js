@@ -10,6 +10,11 @@ import Profile from "./components/Profile";
 import EditDetails from "./components/editDetails";
 import ViewDetails from "./components/viewDetails";
 import { v4 as uuidv4 } from "uuid";
+import "weather-icons/css/weather-icons.css";
+import Login from "./components/Login/login";
+import Register from "./components/Login/register";
+
+// const API_key = "b51a3765532da82660b6d94672370828";
 
 const TASKS_KEY = "justdoit_app";
 
@@ -34,46 +39,129 @@ function timeOfDay() {
 }
 
 class App extends React.Component {
-  state = {
-    user: {
-      name: "Denise Wright",
-      avatar: "/img/denise-wright.jpg",
-    },
-    tasks: [
-      {
-        id: "1",
-        title: "Take out trash",
-        completed: false,
-        items: [],
-        date: "",
-        option: "",
-        description: "",
-      },
-      {
-        id: "2",
-        title: "Finish Assignment",
-        completed: false,
-        items: [],
-        date: "",
-        option: "",
-        description: "",
-      },
-      {
-        id: "3",
-        title: "Pack for Trip",
-        completed: false,
-        items: [],
-        date: "",
-        option: "",
-        description: "",
-      },
-    ],
-    menuActive: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      users: [
+        {
+          id: "1",
+          displayName: "Denise",
+          fullName: "Denise Wright",
+          email: "test@kenzie.academy",
+          password: "test123",
+          avatar: "/img/denise-wright.jpg",
+        },
+      ],
+      tasks: [
+        {
+          id: "1",
+          title: "Take out trash",
+          completed: false,
+          items: [],
+          date: "",
+          option: "",
+          description: "",
+        },
+        {
+          id: "2",
+          title: "Finish Assignment",
+          completed: false,
+          items: [],
+          date: "",
+          option: "",
+          description: "",
+        },
+        {
+          id: "3",
+          title: "Pack for Trip",
+          completed: false,
+          items: [],
+          date: "",
+          option: "",
+          description: "",
+        },
+      ],
+      menuActive: false,
+      city: undefined,
+      country: undefined,
+      icon: undefined,
+      main: undefined,
+      fahrenheit: undefined,
+      temp_max: undefined,
+      temp_min: undefined,
+      description: "",
+      error: false,
+      isLogginActive: true,
+    };
+    // this.getWeather();
+    this.weatherIcon = {
+      Thunderstorm: "wi-thunderstorm",
+      Drizzle: "wi-sleet",
+      Rain: "wi-storm-showers",
+      Snow: "wi-snow",
+      Atmosphere: "wi-fog",
+      Clear: "wi-day-sunny",
+      Clouds: "wi-day-fog",
+    };
+  }
 
-  toggleMenu = (toggle) => {
-    this.setState({ menuActive: toggle });
-  };
+  calFahrenheit(temp) {
+    let fah = Math.floor(temp);
+    return fah;
+  }
+
+  get_WeatherIcon(icons, rangeId) {
+    switch (true) {
+      case rangeId >= 200 && rangeId <= 232:
+        this.setState({ icon: this.weatherIcon.Thunderstorm });
+        break;
+      case rangeId >= 300 && rangeId <= 321:
+        this.setState({ icon: this.weatherIcon.Drizzle });
+        break;
+      case rangeId >= 500 && rangeId <= 531:
+        this.setState({ icon: this.weatherIcon.Rain });
+        break;
+      case rangeId >= 600 && rangeId <= 622:
+        this.setState({ icon: this.weatherIcon.Snow });
+        break;
+      case rangeId >= 701 && rangeId <= 781:
+        this.setState({ icon: this.weatherIcon.Atmosphere });
+        break;
+      case rangeId === 800:
+        this.setState({ icon: this.weatherIcon.Clear });
+        break;
+      case rangeId >= 801 && rangeId <= 804:
+        this.setState({ icon: this.weatherIcon.Clouds });
+        break;
+      default:
+        this.setState({ icon: this.weatherIcon.Clouds });
+    }
+  }
+
+  // getWeather = async () => {
+  //   const api_call = await fetch(
+  //     `http://api.openweathermap.org/data/2.5/weather?q=Tulsa,us&units=imperial&appid=${API_key}`
+  //   );
+
+  //   const response = await api_call.json();
+
+  //   console.log(response);
+
+  //   this.setState({
+  //     city: response.name,
+  //     country: response.sys.country,
+  //     fahrenheit: this.calFahrenheit(response.main.temp),
+  //     temp_max: this.calFahrenheit(response.main.temp_max),
+  //     temp_min: this.calFahrenheit(response.main.temp_min),
+  //     description: response.weather[0].description,
+  //   });
+
+  //   this.get_WeatherIcon(this.weatherIcon, response.weather[0].id);
+  // };
+
+  // toggleMenu = (toggle) => {
+  //   this.setState({ menuActive: toggle });
+  // };
 
   addTask = (task) => {
     const tasks = [...this.state.tasks];
@@ -131,14 +219,31 @@ class App extends React.Component {
           <Menu
             open={this.state.menuActive}
             setOpen={this.toggleMenu}
-            avatar={this.state.user.avatar}
-            name={this.state.user.name}
+            avatar={this.state.users[0].avatar}
+            name={this.state.users[0].fullName}
+            users={this.state.users[0]}
           />
           <Header />
           <main style={timeOfDay().background} className="center wrapper">
             <Switch>
               <Route exact path="/">
-                <Dashboard greeting={timeOfDay().timeofDay} />
+                <Login />
+              </Route>
+              <Route path="/register">
+                <Register users={this.state.users[0]} />
+              </Route>
+              <Route path="/dashboard">
+                <Dashboard
+                  temp_fahrenheit={this.state.fahrenheit}
+                  temp_max={this.state.temp_max}
+                  temp_min={this.state.temp_min}
+                  description={this.state.description}
+                  city={this.state.city}
+                  country={this.state.country}
+                  greeting={timeOfDay().timeofDay}
+                  weatherIcon={this.state.icon}
+                  // getweather={this.getWeather()}
+                />
               </Route>
               <Route path="/mytasks">
                 <MyTasks
@@ -148,8 +253,8 @@ class App extends React.Component {
                   toggleTask={this.toggleTask}
                 />
               </Route>
-              <Route path="/profile">
-                <Profile />
+              <Route path="/profile/:userId">
+                <Profile users={this.state.users} />
               </Route>
               <Route path="/editTask/:taskId">
                 <EditDetails
@@ -158,13 +263,7 @@ class App extends React.Component {
                 />
               </Route>
               <Route path="/task/:taskId">
-                <ViewDetails
-                  title={this.state.tasks.title}
-                  date={this.state.tasks.date}
-                  option={this.state.tasks.option}
-                  description={this.state.tasks.description}
-                  id={this.state.tasks.id}
-                />
+                <ViewDetails tasks={this.state.tasks} />
               </Route>
             </Switch>
           </main>

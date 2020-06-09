@@ -8,7 +8,7 @@ const Modal = ({ handleClose }) => {
       <section className="modal-main">
         <input type="text" onChange={(e) => setTask(e.target.value)}></input>
         <button
-          className="button"
+          className="button2"
           onClick={() => handleClose(task)}
           disabled={task === ""}
         >
