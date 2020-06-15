@@ -59,6 +59,21 @@ class App extends React.Component {
     this.setState({ tasks });
   };
 
+  toggleTask = (task) => {
+    const {tasks} = this.state;
+    const taskIndex = tasks.findIndex((t) => t.title === task.title);
+    task.completed = !task.completed;
+    tasks.splice(taskIndex, 1, task);
+    this.setState({tasks});
+  }
+
+  deleteTask = (title) => {
+    const {tasks} = this.state;
+    const taskIndex = tasks.findIndex((task) => task.title === title);
+    tasks.splice(taskIndex, 1);
+    this.setState({tasks});
+  }
+
   render() {
     return (
       <>

@@ -14,6 +14,10 @@ const Menu = ({ open, ...props }) => {
       </div>
       <a href="/" tabIndex={tabIndex}>
         <span aria-hidden="true"></span>
+        Dashboard
+      </a>
+      <a href="/" tabIndex={tabIndex}>
+        <span aria-hidden="true"></span>
         My Tasks
       </a>
       <a href="/" tabIndex={tabIndex}>
