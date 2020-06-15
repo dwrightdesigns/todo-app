@@ -1,5 +1,4 @@
 import React from "react";
-// import LocalWeather from './LocalWeather';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -37,41 +36,9 @@ class Dashboard extends React.Component {
             })}
           </h3>
         </div>
-        <div className="container">
-          {/* <LocalWeather error={this.props.error} loadweather={this.props.getweather}/> */}
-          <div className="cards">
-            <h1 className="city">
-              {this.props.city}, {this.props.country}
-            </h1>
-            <h5 className="py-4">
-              <i className={`wi ${this.props.weatherIcon} weather-icon`}></i>
-            </h5>
-            <h1 className="current-temp">{this.props.temp_fahrenheit}&deg;F</h1>
-            {minmaxTemp(this.props.temp_min, this.props.temp_max)}
-
-            <h4 className="weather-description">{this.props.description}</h4>
-          </div>
-        </div>
       </>
     );
   }
-}
-
-function minmaxTemp(min, max) {
-  return (
-    <>
-      <div className="high-low">
-        <div className="min-max">
-          <h3 className="px-4">{min}&deg;F</h3>
-          <h3 className="px-5">Low</h3>
-        </div>
-        <div className="min-max">
-          <h3 className="px-4">{max}&deg;F</h3>
-          <h3 className="px-5">High</h3>
-        </div>
-      </div>
-    </>
-  );
 }
 
 export default Dashboard;
