@@ -8,6 +8,8 @@ import Footer from "./components/footer";
 import { Burger, Menu } from "./components";
 import List from "./components/List";
 
+const TASKS_KEY = "justdoit_app";
+
 class App extends React.Component {
   state = {
     tasks: [
@@ -36,6 +38,7 @@ class App extends React.Component {
       {
         title: "Sample To Do",
         completed: false,
+        items: [],
       },
     ],
     isEmptyState: true,
@@ -60,18 +63,31 @@ class App extends React.Component {
   };
 
   toggleTask = (task) => {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
     const taskIndex = tasks.findIndex((t) => t.title === task.title);
     task.completed = !task.completed;
     tasks.splice(taskIndex, 1, task);
-    this.setState({tasks});
-  }
+    this.setState({ tasks });
+  };
 
   deleteTask = (title) => {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
     const taskIndex = tasks.findIndex((task) => task.title === title);
     tasks.splice(taskIndex, 1);
-    this.setState({tasks});
+    this.setState({ tasks });
+  };
+
+  componentDidMount() {
+    const tasksString = localStorage.getItem(TASKS_KEY)
+    if (tasksString) {
+      this.setState({tasks: JSON.parse(tasksString) })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.tasks !== this.state.tasks) {
+      localStorage.setItem(TASKS_KEY, JSON.stringify(this.state.tasks));
+    } 
   }
 
   render() {
