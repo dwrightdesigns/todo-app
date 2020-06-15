@@ -14,8 +14,6 @@ import "weather-icons/css/weather-icons.css";
 import Login from "./components/Login/login";
 import Register from "./components/Login/register";
 
-// const API_key = "b51a3765532da82660b6d94672370828";
-
 const TASKS_KEY = "justdoit_app";
 
 function timeOfDay() {

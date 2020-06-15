@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SubHeader from "./subheader";
 import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Details extends Component {
   getTask() {
