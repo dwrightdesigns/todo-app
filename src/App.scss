@@ -13,8 +13,6 @@
 }
 
 body {
-  background-color: var(--light-color);
-  height: 100vh;
   color: var(--dark-color);
   box-sizing: border-box;
 }
@@ -31,7 +29,6 @@ body {
 .wrapper {
   overflow: hidden;
   width: 100%;
-  background: url(./img/background.jpg);
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -82,10 +79,17 @@ main {
 }
 
 .logo {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   text-align: center;
+  
+}
+
+.logo_wrapper{
+  height: 15vh;
   background-color: var(--lightest-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .list_box {
@@ -139,6 +143,7 @@ main {
 }
 
 .sub__header {
+  color: var(--lightest-color);
   width: 400px;
 }
 
@@ -172,7 +177,7 @@ footer {
   padding-top: 2rem;
   background-color: var(--lighter-color);
   color: var(--dark-color);
-  height: 40px;
+  height: 5%;
   display: flex;
   justify-content: center;
   position: fixed;
@@ -268,7 +273,6 @@ label {
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding-top: 2rem;
 }
@@ -344,4 +348,23 @@ label {
 
 .button:hover {
   opacity: 90%;
+}
+
+.buttons {
+  display: flex;
+}
+
+.details_wrapper {
+  padding: 1rem;
+  line-height: 2rem;
+}
+
+.details_box {
+  background-color: var(--lighter-color);
+  width: 400px;
+  border-radius: 4px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }

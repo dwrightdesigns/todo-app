@@ -8,16 +8,36 @@ import MyTasks from "./components/MyTasks";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import EditDetails from "./components/editDetails";
-import Details from "./components/Details";
+import ViewDetails from "./components/viewDetails";
 import { v4 as uuidv4 } from "uuid";
 
 const TASKS_KEY = "justdoit_app";
+
+function timeOfDay() {
+  const date = new Date();
+  const hours = date.getHours();
+  let timeofDay;
+  let background;
+
+  if (hours < 12) {
+    timeofDay = "Good Morning";
+    background = styles.morningBg;
+  } else if (hours >= 12 && hours < 17) {
+    timeofDay = "Good Afternoon";
+    background = styles.afternoonBg;
+  } else {
+    timeofDay = "Good Evening";
+    background = styles.eveningBg;
+  }
+
+  return { timeofDay, background };
+}
 
 class App extends React.Component {
   state = {
     user: {
       name: "Denise Wright",
-      avatar: "https://bit.ly/3fWa4Gw",
+      avatar: "/img/denise-wright.jpg",
     },
     tasks: [
       {
@@ -27,7 +47,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
       {
         id: "2",
@@ -36,7 +56,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
       {
         id: "3",
@@ -45,7 +65,7 @@ class App extends React.Component {
         items: [],
         date: "",
         option: "",
-        desciption: "",
+        description: "",
       },
     ],
     menuActive: false,
@@ -57,7 +77,14 @@ class App extends React.Component {
 
   addTask = (task) => {
     const tasks = [...this.state.tasks];
-    tasks.push({ title: task, completed: false, id:uuidv4(), option: "", date: "", description: ""});
+    tasks.push({
+      title: task,
+      completed: false,
+      id: uuidv4(),
+      option: "",
+      date: "",
+      description: "",
+    });
     this.setState({ tasks });
   };
 
@@ -81,7 +108,7 @@ class App extends React.Component {
     const taskIndex = tasks.findIndex((t) => t.id === task.id);
     tasks.splice(taskIndex, 1, task);
     this.setState({ tasks });
-  }
+  };
 
   componentDidMount() {
     const tasksString = localStorage.getItem(TASKS_KEY);
@@ -108,10 +135,10 @@ class App extends React.Component {
             name={this.state.user.name}
           />
           <Header />
-          <main className="center">
+          <main style={timeOfDay().background} className="center wrapper">
             <Switch>
               <Route exact path="/">
-                <Dashboard />
+                <Dashboard greeting={timeOfDay().timeofDay} />
               </Route>
               <Route path="/mytasks">
                 <MyTasks
@@ -125,10 +152,19 @@ class App extends React.Component {
                 <Profile />
               </Route>
               <Route path="/editTask/:taskId">
-                <EditDetails tasks={this.state.tasks} editTask={this.editTask}/>
+                <EditDetails
+                  tasks={this.state.tasks}
+                  editTask={this.editTask}
+                />
               </Route>
-              <Route path="/task/">
-                <Details />
+              <Route path="/task/:taskId">
+                <ViewDetails
+                  title={this.state.tasks.title}
+                  date={this.state.tasks.date}
+                  option={this.state.tasks.option}
+                  description={this.state.tasks.description}
+                  id={this.state.tasks.id}
+                />
               </Route>
             </Switch>
           </main>
@@ -138,5 +174,17 @@ class App extends React.Component {
     );
   }
 }
+
+const styles = {
+  morningBg: {
+    backgroundImage: `url("/img/background.jpg")`,
+  },
+  afternoonBg: {
+    backgroundImage: `url(/img/john-jason-aF99M98c_uk-unsplash.jpg")`,
+  },
+  eveningBg: {
+    backgroundImage: `url("/img/paul-matheson-kIdprAuzDvc-unsplash.jpg")`,
+  },
+};
 
 export default App;

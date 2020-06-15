@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./Modal";
 
+
 class AddItem extends Component {
   state = { show: false };
 
@@ -19,8 +20,8 @@ class AddItem extends Component {
         <div>
           {this.state.show && <Modal handleClose={this.handleClose}></Modal>}
         </div>
-        <div>
-          <h3 className="add" onClick={this.toggleModal}>
+        <div onMouseEnter={onHover} onMouseLeave={onLeave} >
+          <h3 onClick={this.toggleModal}>
             <i className="fas fa-plus-circle"></i>
             Add Item
           </h3>
@@ -28,6 +29,14 @@ class AddItem extends Component {
       </>
     );
   }
+}
+
+function onHover(e) {
+  e.target.style.color = "rgba(224,23,131,1)"
+}
+
+function onLeave(e) {
+  e.target.style.color = "rgba(51,51,51,1)"
 }
 
 export default AddItem;

@@ -1,21 +1,5 @@
 import React from "react";
 
-function timeOfDay() {
-  const date = new Date();
-  const hours = date.getHours();
-  let timeofDay;
-
-  if (hours < 12) {
-    timeofDay = "Good Morning";
-  } else if (hours >= 12 && hours < 17) {
-    timeofDay = "Good Afternoon";
-  } else {
-    timeofDay = "Good Evening";
-  }
-
-  return timeofDay;
-}
-
 class Dashboard extends React.Component {
   state = {
     time: new Date(),
@@ -38,7 +22,7 @@ class Dashboard extends React.Component {
 
     return (
       <div className="greeting">
-        <h1>{timeOfDay()}</h1>
+        <h1>{this.props.greeting}</h1>
         <h2>The time is {this.state.time.toLocaleTimeString()}</h2>
         <h3>
           The date is{" "}
@@ -52,5 +36,8 @@ class Dashboard extends React.Component {
     );
   }
 }
+
+
+
 
 export default Dashboard;
