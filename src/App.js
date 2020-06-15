@@ -1,60 +1,74 @@
 import React from "react";
 import "./App.css";
+import Task from "./components/Task";
+// import Nav from "./components/menu/Menu";
+import Header from "./components/Header";
+import Subheader from "./components/subheader";
+import Additem from "./components/Additem";
+import Footer from "./components/footer";
+import { Burger, Menu } from "./components";
 
-function toggleSidebar() {
-  document.querySelector(".sidebar").classList.toggle("active");
-}
+class App extends React.Component {
+  state = {
+    tasks: [
+      {
+        id: 1,
+        title: "Shopping List",
+        completed: false,
+      },
+      {
+        id: 2,
+        title: "School Assignments",
+        completed: false,
+      },
+      {
+        id: 3,
+        title: "Vacation Packing List",
+        completed: false,
+      },
+    ],
+    user: {
+      name: "Denise Wright",
+      avatar: "https://bit.ly/3fWa4Gw",
+    },
+    menuActive: false,
+  };
 
-const user = {
-  name: "Denise Wright",
-  avatar: "https://bit.ly/3fWa4Gw",
-}
+  toggleMenu = (toggle) => {
+      this.setState({menuActive: toggle})
+  }
 
-function App() {
-  return (
-    <>
-      <header className="sidebar">
-        <div className="toggle-btn" onlick={toggleSidebar}>
-          <i className="fas fa-bars"></i>
-        </div>
-        <div className="user">
-          <img alt="user avatar" src="{user.avatar}"/>
-          <h3>{user.name}</h3>
-        </div>
-        <ul>
-          <li>My Tasks</li>
-          <li>My Profile</li>
-          <li>Settings</li>
-        </ul>
-      </header>
-      <main>
-        <div className="logo">
-          <img alt="just do it logo" src="./logo192.png" />
-        </div>
-        <section className="sub__header">
-          <h3>My Tasks</h3>
-          <button>Edit Tasks</button>
-        </section>
-        <section className="inner__frame">
-          <ul>
-            <li>Shopping List</li>
-            <li>School Assignments</li>
-            <li>Vacation Packing List</li>
-          </ul>
-          <div className="new__task">
-            <i className="fas fa-plus-circle"></i>
-            <h3>Create New Task</h3>
-          </div>
-        </section>
-      </main>
-      <footer>
-        <cite>
-          Designed By:{" "}
-          <a href="https://denisewrightdesigns.com">Denise Wright</a>
-        </cite>
-      </footer>
-    </>
-  );
+  render() {
+
+    return (
+      <>
+        <Burger open={this.state.menuActive} setOpen={this.toggleMenu} />
+        <Menu open={this.state.menuActive} setOpen={this.toggleMenu} avatar={this.state.user.avatar} name={this.state.user.name} />
+        <Header />
+        <main>
+          <section className="sub__header">
+            <Subheader
+              subheader="My Tasks"
+              button="Edit Tasks"
+              open={this.state.menuActive}
+              onClick={() => this.toggleMenu(!this.state.menuActive)}
+            />
+          </section>
+          <section className="list_box">
+            <ul>
+              {this.state.tasks.map((taskObj, index) => (
+                <Task task={taskObj} key={index} />
+              ))}
+            </ul>
+            <div className="new__task">
+              <Additem add="Create New Task" />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default App;

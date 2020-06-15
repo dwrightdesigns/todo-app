@@ -38,6 +38,11 @@ body {
   border-bottom: 1px solid var(--light-color);
 }
 
+.sidebar ul li:hover {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
 .toggle-btn {
   position: absolute;
   left: -40px;
@@ -50,7 +55,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0 1rem 0;
+  padding: 2.5rem 0 1rem 0;
 }
 
 .avatar{
@@ -68,9 +73,10 @@ main {
 .logo {
   padding-top: 2rem;
   padding-bottom: 4rem;
+  text-align: center;
 }
 
-.inner__frame {
+.list_box {
   background-color: var(--lighter-color);
   width: 400px;
   margin: auto;
@@ -78,7 +84,7 @@ main {
   height: 500px;
 }
 
-.inner__frame ul li {
+.list_box ul li {
   list-style-type: none;
   background-color: var(--lightest-color);
   margin: .5rem;
@@ -91,7 +97,7 @@ main {
   padding-left: 20px;
 }
 
-.inner__frame li:hover{
+.list_box li:hover{
     opacity: .75;
     color: var(--main-color);
     cursor: pointer;
@@ -130,4 +136,17 @@ main {
 footer {
   text-align: center;
   padding-top: 2rem;
+  background-color: var(--dark-color);
+  color: var(--lightest-color);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+footer a {
+  color: var(--main-color);
 }
