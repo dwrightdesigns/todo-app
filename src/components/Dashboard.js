@@ -7,13 +7,10 @@ function timeOfDay() {
 
   if (hours < 12) {
     timeofDay = "Good Morning";
-    document.body.background = "./img/morning.jpg";
   } else if (hours >= 12 && hours < 17) {
     timeofDay = "Good Afternoon";
-    document.body.background = "./img/afternoon.jpg";
   } else {
     timeofDay = "Good Evening";
-    document.body.background = "./img/evening.jpg";
   }
 
   return timeofDay;
@@ -38,6 +35,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
     return (
       <div className="greeting">
         <h1>{timeOfDay()}</h1>
