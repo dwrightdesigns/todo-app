@@ -1,12 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import Modal from "./Modal";
 
-function Additem(props) {
-  return (
-    <>
-      <i className="fas fa-plus-circle"></i>
-      <h3>{props.add}</h3>
-    </>
-  );
+class AddItem extends Component {
+  state = { show: false };
+
+  toggleModal = () => {
+    this.setState({ show: !this.state.show });
+  };
+
+  handleClose = (task) => {
+    this.props.handleAdd(task);
+    this.toggleModal();
+  };
+
+  render() {
+    return (
+      <>
+        <div>
+          {this.state.show && <Modal handleClose={this.handleClose}></Modal>}
+        </div>
+        <div>
+          <h3 className="add" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle"></i>
+            Create New Task
+          </h3>
+        </div>
+      </>
+    );
+  }
 }
 
-export default Additem;
+export default AddItem;

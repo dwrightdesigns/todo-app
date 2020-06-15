@@ -9,11 +9,11 @@ export const StyledMenu = styled.nav`
   height: 100vh;
   text-align: center;
   padding: 2rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   transition: transform 0.3s ease-in-out;
-  @media (max-width: ${({ theme }) => theme.mobile}) {
+  @media (max-width: 320px ) {
       width: 100%;
     }
   a {
@@ -27,7 +27,7 @@ export const StyledMenu = styled.nav`
     color: rgba(51, 51, 51, 1);
     text-decoration: none;
     transition: color 0.3s linear;
-    @media (max-width: ${({ theme }) => theme.mobile}) {
+    @media (max-width: 968px}) {
       font-size: 1.5rem;
       text-align: center;
     }

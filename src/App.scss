@@ -1,0 +1,271 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
+
+:root {
+  --main-color: rgba(224, 23, 131, 1);
+  --dark-color: rgba(51, 51, 51, 1);
+  --light-color: rgba(220, 220, 220, 1);
+  --lighter-color: rgba(240, 240, 240, 1);
+  --lightest-color: rgba(255, 255, 255, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  box-sizing: border-box;
+}
+
+.sidebar {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--lighter-color);
+  right: -100%;
+  transition: all 500ms linear;
+}
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.sidebar:active {
+  right: 0px;
+}
+
+.sidebar ul li {
+  list-style-type: none;
+  text-align: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--light-color);
+}
+
+.sidebar ul li:hover {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.toggle-btn {
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0 1rem 0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: 2px solid var(--lightest-color);
+  margin-right: 10px;
+}
+
+main {
+  text-align: center;
+}
+
+.logo {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+.list_box {
+  background-color: var(--lighter-color);
+  width: 400px;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+#tasks {
+  height: 500px;
+  overflow: auto;
+}
+
+#todos {
+  height: inherit;
+  overflow: inherit;
+}
+
+.tasks {
+  list-style-type: none;
+  background-color: var(--lightest-color);
+  margin-bottom: 0.5rem;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}
+
+.lists {
+  list-style-type: none;
+  background-color: var(--lightest-color);
+  margin-bottom: 0.5rem;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}
+
+.fa-chevron-right:hover {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.sub__header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: auto;
+  align-items: center;
+}
+
+.button {
+  outline: none;
+  color: var(--lightest-color);
+  background-color: var(--main-color);
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.new__task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 20px;
+  border-top: 2px solid rgba(220, 220, 220, 1);
+}
+
+.add:hover {
+  color: rgba(224, 23, 131, 1);
+}
+
+.new__task i {
+  padding-right: 10px;
+}
+
+footer {
+  text-align: center;
+  padding-top: 2rem;
+  background-color: var(--dark-color);
+  color: var(--lightest-color);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+footer a {
+  color: var(--main-color);
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-main {
+  position: absolute;
+  background: rgba(255, 255, 255, 1);
+  width: 400px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.modal-main input {
+  height: 30px;
+  margin-right: 1rem;
+  width: 240px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(240, 240, 240, 1);
+  cursor: text;
+  outline: none;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.go_back {
+  padding: 1rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.go_back i {
+  padding-right: 10px;
+}
+
+.go_back:hover {
+  color: var(--main-color);
+}
+
+label {
+  cursor: pointer;
+  color: rgba(51, 51, 51, 1);
+
+  input[type="checkbox"] {
+    display: none;
+
+    + .label-text::before {
+      content: "\f111";
+      font-family: "FontAwesome";
+      width: 1em;
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
+
+    &:checked + .label-text::before {
+      content: "\f058";
+      color: rgba(224, 23, 131, 1);
+    }
+  }
+
+  .strikethrough:checked + span {
+    text-decoration: line-through;
+  }
+}
