@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SubHeader from "./subheader";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class EditDetails extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class EditDetails extends Component {
 
   handleBack = (e) => {
     e.preventDefault();
-    this.props.history.push("/myTasks");
+    // this.props.history.push("/myTasks");
   };
 
   render() {
@@ -107,13 +107,7 @@ class EditDetails extends Component {
               />
             </label>
             <div className="buttons">
-              <button
-                className="button"
-                type="button"
-                onClick={this.handleBack}
-              >
-                Go Back
-              </button>
+              <Link className="button" to="/myTasks">Go Back</Link>
               {/* This button needs to be wired to go back to MyTasks */}
               <button className="button" type="submit">
                 Save

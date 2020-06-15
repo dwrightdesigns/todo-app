@@ -80,10 +80,9 @@ main {
 
 .logo {
   text-align: center;
-  
 }
 
-.logo_wrapper{
+.logo_wrapper {
   height: 15vh;
   background-color: var(--lightest-color);
   display: flex;
@@ -214,14 +213,34 @@ footer a {
 }
 
 .modal-main input {
-  height: 30px;
+  height: 35px;
   margin-right: 1rem;
-  width: 240px;
+  width: 250px;
   border-radius: 4px;
   border: none;
   background: rgba(240, 240, 240, 1);
   cursor: text;
   outline: none;
+  font-size: 1rem;
+}
+
+.button2 {
+  outline: none;
+  color: var(--lightest-color);
+  background-color: var(--main-color);
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid #970155;
+  width: 100px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button2:hover {
+  opacity: 90%;
 }
 
 .display-block {
@@ -255,12 +274,12 @@ label {
 
     + .label-text::before {
       font-family: "FontAwesome";
-      content: url('./img/un-check.png');
+      content: url("./img/un-check.png");
       display: inline-block;
     }
 
     &:checked + .label-text::before {
-      content: url('./img/check.png');
+      content: url("./img/check.png");
       color: rgba(224, 23, 131, 1);
     }
   }
@@ -340,10 +359,10 @@ label {
   cursor: pointer;
   outline: none;
   border: 2px solid #970155;
-  width: 150px;
+  width: 120px;
   margin: auto;
-  margin-top: 10px;
   text-decoration: none;
+  text-align: center;
 }
 
 .button:hover {
@@ -367,4 +386,227 @@ label {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+// weather
+
+.city {
+  padding: 1rem;
+}
+
+.weather-icon {
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.current-temp {
+  padding: 1rem;
+}
+
+.min-max {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  .px-4 {
+    line-height: 0;
+    padding: 1rem 1rem 0 1rem;
+  }
+  .px-5 {
+    font-size: 12px;
+  }
+}
+
+.high-low {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-description {
+  padding: 0 1rem 1rem 1rem;
+  font-size: 1.2rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  input {
+    height: 35px;
+    margin-right: 1rem;
+    width: 114px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(240, 240, 240, 1);
+    cursor: text;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  input[placeholder] {
+    padding-left: 10px;
+  }
+}
+
+.container {
+  margin-top: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 400px;
+  text-align: center;
+  line-height: 2.5rem;
+}
+
+// Login Styles
+
+.base-container {
+  margin-top: 4rem;
+  background-color: rgba(220, 220, 220, 0.5);
+  width: 400px;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: 4rem;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .error {
+      color: var(--main-color);
+      padding-bottom: 1rem;
+    }
+  }
+
+  .image {
+    font-size: 6rem;
+    margin: -2.5rem 0 2rem 0;
+
+    .fa-user-circle {
+      color: var(--main-color);
+      border-radius: 100%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      margin: auto;
+      justify-content: center;
+      background-color: var(--lighter-color);
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: fit-content;
+
+      label {
+        font-size: 1rem;
+      }
+
+      input {
+        margin-top: 6px;
+        min-width: 18em;
+        height: 37px;
+        padding: 0px 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 20px;
+        cursor: text;
+        background-color: var(--lightest-color);
+        margin-bottom: 31px;
+        transition: all 250ms ease-in-out;
+        &:focus {
+          outline: none;
+          box-shadow: 0px 0px 12px 0.8px var(--main-color);
+        }
+      }
+    }
+  }
+  .form-footer {
+    .register {
+      margin: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .sign-up {
+      text-decoration: none;
+      padding-left: 6px;
+      color: var(--main-color);
+    }
+
+    .button {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// profile styles
+
+.profile-container {
+  margin-top: 4rem;
+  background-color: rgba(220, 220, 220, 0.5);
+  width: 400px;
+  margin: auto;
+  border-radius: 4px;
+  margin-top: 4rem;
+
+  .content {
+    .image {
+      font-size: 6rem;
+      margin: -2.5rem 0 -1rem 0;
+      .fa-user-circle {
+        border: var(--light-color) 4px solid;
+        color: var(--main-color);
+        border-radius: 100%;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        justify-content: center;
+        background-color: var(--lighter-color);
+      }
+    }
+
+    .user {
+      flex-direction: column;
+      font-size: 1.2rem;
+      text-align: center;
+
+      .hello {
+        font-weight: lighter;
+
+        span {
+          color: var(--main-color);
+          font-weight: bold;
+          letter-spacing: 0.2rem;
+        }
+      }
+    }
+
+    .user-details {
+      text-align: center;
+      padding-bottom: 1rem;
+      line-height: 2rem;
+
+      h4 {
+        padding-top: 1rem;
+      }
+    }
+
+    .nav_btn {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 1rem 0 2rem 0;
+    }
+  }
 }
