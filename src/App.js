@@ -87,6 +87,10 @@ class App extends React.Component {
     };
   }
 
+  toggleMenu = (toggle) => {
+    this.setState({ menuActive: toggle });
+  };
+
   addTask = (task) => {
     const tasks = [...this.state.tasks];
     tasks.push({
