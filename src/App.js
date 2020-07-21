@@ -10,8 +10,8 @@ import Profile from "./components/Profile";
 import EditDetails from "./components/editDetails";
 import ViewDetails from "./components/viewDetails";
 import { v4 as uuidv4 } from "uuid";
-// import Login from "./components/Login/login";
-// import Register from "./components/Login/register";
+import Login from "./components/Login/login";
+import Register from "./components/Login/register";
 
 const TASKS_KEY = "justdoit_app";
 
@@ -79,9 +79,6 @@ class App extends React.Component {
         },
       ],
       menuActive: false,
-      city: undefined,
-      country: undefined,
-      description: "",
       error: false,
       isLogginActive: true,
     };
@@ -162,11 +159,9 @@ class App extends React.Component {
               </Route>
               <Route path="/dashboard">
                 <Dashboard
-                  description={this.state.description}
-                  city={this.state.city}
-                  country={this.state.country}
                   greeting={timeOfDay().timeofDay}
                 />
+                <Dashboard greeting={timeOfDay().timeofDay} />
               </Route>
               <Route path="/mytasks">
                 <MyTasks
