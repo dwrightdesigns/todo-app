@@ -152,12 +152,15 @@ class App extends React.Component {
           <main style={timeOfDay().background} className="center wrapper">
             <Switch>
               <Route exact path="/">
-                <Login />
+                {/* <Login /> */}
               </Route>
               <Route path="/register">
-                <Register users={this.state.users[0]} />
+                {/* <Register users={this.state.users[0]} /> */}
               </Route>
               <Route path="/dashboard">
+                <Dashboard
+                  greeting={timeOfDay().timeofDay}
+                />
                 <Dashboard greeting={timeOfDay().timeofDay} />
               </Route>
               <Route path="/mytasks">
