@@ -161,7 +161,6 @@ class App extends React.Component {
                 <Dashboard
                   greeting={timeOfDay().timeofDay}
                 />
-                <Dashboard greeting={timeOfDay().timeofDay} />
               </Route>
               <Route path="/mytasks">
                 <MyTasks
